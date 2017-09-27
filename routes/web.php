@@ -1,5 +1,7 @@
 <?php
 
+use App\Mail\ContactMessageCreated;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,3 +27,12 @@ Route::get('/contact', [
     'as' => 'contact_path',
     'uses' => 'ContactsController@create'
 ]);
+
+Route::post('/contact', [
+    'as' => 'contact_path',
+    'uses' => 'ContactsController@store'
+]);
+
+Route::get('/test-email', function() {
+    return new ContactMessageCreated('Lyko Flexii', 'kote.proformating@gmail.com', 'Merci pour Laracarte.');
+});
